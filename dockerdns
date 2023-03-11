@@ -226,6 +226,8 @@ class DockerMonitor(object):
         return [ '.'.join((name, self._domain)) for name in names ]
 
     def _get_addrs(self, networks):
+        if networks is None:
+            return []
         return [ value['IPAddress'] for value in networks.values() ]
 
     def _inspect(self, cid):
